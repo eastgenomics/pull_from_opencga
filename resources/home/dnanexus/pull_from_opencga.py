@@ -37,5 +37,15 @@ variant_operations = oc.variant_operations
 
 result = oc.individuals.search(study='panel', limit=5, include='id')
 print(result.responses)
+
+# Show as dataframe
 df = pd.DataFrame.from_dict(result.responses[0]['results'])
 print(df)
+
+# Show as JSON
+result_json = json.dumps(result.responses[0]['results'])
+print(result_json)
+for sample in result.responses[0]['results']:
+    sample_json = json.dumps(sample, indent=4)
+    print(sample_json)
+
